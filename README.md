@@ -22,10 +22,10 @@ Linux.
 What To Do
 ==========
 
-You need to write a function called `countWord(char * filename, char * word, char * line, int size)` 
+You need to write a function called `checkSpell(char * filename, char * word, char * line, int size)` 
 that opens a file named `filename`, counts the number of occurences of given word in the file,
 and returns it. If `fopen()` fails, return -1, and **DO NOT** fclose.
-Further instructions are in the comments in the function in file `filestr.c`.
+Further instructions are in the comments in the function in file `checkSpell.c`.
 
 
 Check Memory Leak
@@ -40,7 +40,7 @@ like an airplane that leaks fuel. Neither can be accepted.
 WHAT TO SUBMIT
 ==============
 
-Submit the following files to gradescope as a zip file: 'main.c', 'filestr.c', 'hw05.h'.
+Submit the following files to gradescope as a zip file: 'main.c', 'checkSpell.c', 'hw06.h'.
 
 Test Inputs
 ===========
