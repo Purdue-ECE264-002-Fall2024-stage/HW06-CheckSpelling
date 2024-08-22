@@ -1,21 +1,43 @@
+# ***
+# *** DO NOT modify this file 
+# ***
+
 WARNING = -Wall -Wshadow --pedantic
 ERROR = -Wvla -Werror
-GCC = gcc -std=c99 -g $(WARNING) $(ERROR)
+GCC = gcc -std=c11 -g $(WARNING) $(ERROR) 
 
-build: hw01-6.c
-	$(GCC) hw01-6.c -o hw01-6
+TESTFALGS = -DTEST_COUNTWORD # -DDEBUG
 
-test1: build
-	./hw01-6 4 5 > output1
-	diff output1 expected/expected1
+SRCS = main.c filestr.c
+OBJS = $(SRCS:%.c=%.o)
 
-test2: build
-	./hw01-6 987 321 > output2
-	diff output2 expected/expected2
+# diff -w means do not care about space
+
+hw05: $(OBJS) 
+	$(GCC) $(TESTFALGS) $(OBJS) -o hw06
+
+.c.o: 
+	$(GCC) $(TESTFALGS) -c $*.c 
+
+testall: test1 test2 test3 test4
+
+test1: hw06
+	./hw06 inputs/input1 "on" > output1
+	diff -w output1 expected/expected1
+
+test2: hw06
+	./hw06 inputs/input2 "t" > output2
+	diff -w output2 expected/expected2
+
+test3: hw06
+	./hw06 inputs/input3 "ly" > output3
+	diff -w output3 expected/expected3
+
+test4: hw06
+	./hw06 inputs/input4 "ss" > output4
+	diff -w output4 expected/expected4
+
+
 
 clean: # remove all machine generated files
-	rm -f hw01-6 output? *~
-
-
-
-
+	rm -f hw06 *.o output*
