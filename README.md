@@ -1,19 +1,17 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/cI_ddl8M)
-# Read Line from File and Count Word
+# Read Check Spelling from Word
 
-### Due 02/18 at 11:59pm
+### Due 09/30 at 11:59pm
 
 Learning Goals 
 ==============
 
-This assignment asks you to write a program that reads lines from a file,
-counts how many times a word occurs, and report the result.
+This assignment asks you to write a program that checks the spelling of a word from a string.
 
 You will learn to
 * Read lines and store as strings
-* Detect whether one string is inside another string
+* Detect if spelling distance is off from normal
 
-Read Line from File and Count Words
+Read Word from String and Check Spelling
 ===================================
 
 This assignment uses `fgets` to read strings from a file, uses
