@@ -6,7 +6,7 @@
 #include <string.h> 
 #include <stdbool.h>
 #include "checker.h"
-int Levenshtein(const char * str1, const char * str2, int* ct1, int* ct2);
+int Levenshtein(const char * str1, const char * str2);
 
 int countWords(char* filename)
 {
@@ -40,7 +40,6 @@ bool readWords(char* filename, WordDistance * wd, int numword)
       if (fgets(oneline, MAXLENGTH, fin) != NULL) //same thing as before if there is 41 chars in file
 	{
 	  //strcpy(wd[count].word, oneline); //copy oneline into Worddistance wd
-    //strncpy(wd[count].word, oneline, (strlen(oneline) - 1));
     for (int i = 0; (i < (int)(strlen(oneline)) && (oneline[i] != '\n') && (oneline[i] != '\0'))  ; i++)
     {
       wd[count].word[i] = oneline[i];
@@ -62,35 +61,13 @@ bool readWords(char* filename, WordDistance * wd, int numword)
 void calculateDistance(WordDistance * wd, int numword, const char * tocheck)
 {
   int ind;
-  int *ct1 = (int *)malloc(sizeof(int));
-  int *ct2 = (int *)malloc(sizeof(int));
-  *ct1 = 0;
-  *ct2 = 0;
 
   for (ind = 0; ind < numword; ind ++)
     {
-      int longer;
-      if (strlen(wd[ind].word) > strlen(tocheck))
-      {
-        longer = (int)strlen(wd[ind].word);
-      }
-      else
-      {
-        longer = (int)strlen(tocheck);
-      }
-      if (Levenshtein(wd[ind].word, tocheck, ct1, ct2) > longer)
-      {
-        wd[ind].distance = longer;
-      }
-      else
-      {
-        wd[ind].distance = Levenshtein(wd[ind].word, tocheck, ct1, ct2);
-      }
+      
 
-      //printf("%d\n", wd[ind].distance);
+      wd[ind].distance = Levenshtein(wd[ind].word, tocheck);
     }
-  free(ct1);
-  free(ct2);
 }
 
 
