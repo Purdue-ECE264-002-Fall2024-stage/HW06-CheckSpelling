@@ -1,43 +1,41 @@
 # ***
-# *** DO NOT modify this file 
+# *** You can modify this file. You do not (should not) submit this file
 # ***
 
 WARNING = -Wall -Wshadow --pedantic
 ERROR = -Wvla -Werror
 GCC = gcc -std=c11 -g $(WARNING) $(ERROR) 
-
-TESTFALGS = -DTEST_COUNTWORD # -DDEBUG
-
-SRCS = main.c filestr.c
+SRCS = main.c checker.c levenshtein.c
 OBJS = $(SRCS:%.c=%.o)
 
-# diff -w means do not care about space
-
-hw05: $(OBJS) 
-	$(GCC) $(TESTFALGS) $(OBJS) -o hw06
+main: $(OBJS) 
+	$(GCC) $(OBJS) -o main
 
 .c.o: 
-	$(GCC) $(TESTFALGS) -c $*.c 
+	$(GCC) -c $*.c 
 
-testall: test1 test2 test3 test4
+testall: test1 test2 test3 test4 test5
+test1: main
+	./main inputs/list1 billy > output1
+	diff output1 expected/expected1
 
-test1: hw06
-	./hw06 inputs/input1 "on" > output1
-	diff -w output1 expected/expected1
+test2: main
+	./main inputs/list2 hilly > output2
+	diff output2 expected/expected2
 
-test2: hw06
-	./hw06 inputs/input2 "t" > output2
-	diff -w output2 expected/expected2
+test3: main
+	./main inputs/list3 purdue > output3
+	diff output3 expected/expected3
 
-test3: hw06
-	./hw06 inputs/input3 "ly" > output3
-	diff -w output3 expected/expected3
+test4: main
+	./main inputs/list4 program > output4
+	diff output4 expected/expected4
 
-test4: hw06
-	./hw06 inputs/input4 "ss" > output4
-	diff -w output4 expected/expected4
-
-
+test5: main
+	./main inputs/list5 lafayette > output5
+	diff output5 expected/expected5
 
 clean: # remove all machine generated files
-	rm -f hw06 *.o output*
+	rm -f main *.o output? *~
+
+

@@ -1,30 +1,35 @@
 // ***
-// *** DO NOT modify this file
+// *** You must modify this file
 // ***
 
 #include <stdio.h>  
 #include <stdlib.h> 
 #include <string.h> 
 #include <stdbool.h>
-#include "hw06.h"
-#define LINELENGTH 80
+#include "checker.h"
 
 int main(int argc, char * * argv)
 {
-  // argv[1] is the input file name
-  // argv[2] is the word to be counted
-  if (argc != 3)
-    {
-      return EXIT_FAILURE;
-    }
-  int sum = 0;
-  char * line = malloc(sizeof(* line) * LINELENGTH);
-  sum = countWord(argv[1], argv[2], line, LINELENGTH);
-  if (sum < 0)
-    {
-      return EXIT_FAILURE;
-    }
-  printf("%d\n", sum);
-  free (line);
+  if (argc < 3)
+    { return EXIT_FAILURE; }
+  int numword = countWords(argv[1]);
+  if (numword <= 0) // empty dictionary or some words too long
+    { 
+      return EXIT_FAILURE; }
+  WordDistance * wd = malloc(sizeof(WordDistance) * numword);
+  if (wd == NULL)
+    { return EXIT_FAILURE; }
+  bool rtv = readWords(argv[1], wd, numword);
+  if (rtv == false)
+    { return EXIT_FAILURE; }
+  
+  calculateDistance(wd, numword, argv[2]);
+
+
+  sortDistance(wd, numword);
+  printWord(wd, numword);
   return EXIT_SUCCESS;
+  
+  
 }
+
