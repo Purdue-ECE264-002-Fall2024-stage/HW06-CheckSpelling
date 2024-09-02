@@ -15,7 +15,8 @@ typedef struct
 
 int countWords(char* filename);
 bool readWords(char* filename, WordDistance * wd, int numword);
-int Levenshtein(const char* str1, const char* str2);
+int Levenshtein_recursive(const char* str1, const char* str2);
+int Levenshtein_iterative(const char* str1, const char* str2);
 void calculateDistance(WordDistance * wd, int numword, const char * tocheck);
 void sortDistance(WordDistance * wd, int numword);
 void printWord(WordDistance * wd, int numword);

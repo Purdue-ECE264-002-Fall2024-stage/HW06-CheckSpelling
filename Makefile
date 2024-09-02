@@ -14,7 +14,7 @@ main: $(OBJS)
 .c.o: 
 	$(GCC) -c $*.c 
 
-testall: test1 test2 test3 test4 test5 # test6
+testall: test1 test2 test3 test4 test5
 test1: main
 	./main inputs/list1 billy > output1
 	diff output1 expected/expected1
@@ -35,9 +35,6 @@ test5: main
 	./main inputs/list5 lafayette > output5
 	diff output5 expected/expected5
 
-#test6: main
-#	./main inputs/list6 thisisareallylongwordtocheckyourimplementation > output6
-#	diff output6 expected/expected6
 
 clean: # remove all machine generated files
 	rm -f main *.o output? *~

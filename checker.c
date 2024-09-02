@@ -74,7 +74,7 @@ void calculateDistance(WordDistance* wd, int numword, const char* tocheck)
 {
   for (int ind = 0; ind < numword; ind++)
   {
-    wd[ind].distance = Levenshtein(wd[ind].word, tocheck);
+    wd[ind].distance = Levenshtein_iterative(wd[ind].word, tocheck);
   }
 }
 

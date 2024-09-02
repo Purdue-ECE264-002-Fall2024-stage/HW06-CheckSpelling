@@ -4,7 +4,7 @@
 // algorithm described on
 // https://en.wikipedia.org/wiki/Levenshtein_distance
 
-int Levenshtein(const char* str1, const char* str2)
+int Levenshtein_recursive(const char* str1, const char* str2)
 {
   if (strlen(str1) == 0) 
   {
@@ -18,13 +18,13 @@ int Levenshtein(const char* str1, const char* str2)
   
   if ((*str1) == (*str2)) // first letter same
   {
-    return Levenshtein(str1 + 1, str2 + 1);
+    return Levenshtein_recursive(str1 + 1, str2 + 1);
   }
 
   int mindist = INT_MAX;
-  int dist1 = Levenshtein(str1 + 1, str2);
-  int dist2 = Levenshtein(str1, str2 + 1);
-  int dist3 = Levenshtein(str1 + 1, str2 + 1); 
+  int dist1 = Levenshtein_recursive(str1 + 1, str2);
+  int dist2 = Levenshtein_recursive(str1, str2 + 1);
+  int dist3 = Levenshtein_recursive(str1 + 1, str2 + 1); 
 
   if (mindist > dist1) 
   {
