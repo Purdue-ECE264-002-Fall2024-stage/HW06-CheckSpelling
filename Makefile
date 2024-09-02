@@ -36,7 +36,7 @@ test5: main
 	diff output5 expected/expected5
 
 test6: main
-	./main inputs/list6 pneumonoultramicroscopicsilicoreallyneedtherest > output6
+	./main inputs/list6 thisisareallylongwordtocheckyourimplementation > output6
 	diff output6 expected/expected6
 
 clean: # remove all machine generated files
