@@ -45,7 +45,7 @@ bool readWords(char* filename, WordDistance* wd, int numword)
   while (!feof(fin))
   {
     int c = fgetc(fin);
-    if (curr_c < MAXLENGTH && c != 10 && c != -1) // current character is not line feed
+    if (curr_c < (MAXLENGTH -1) && c != 10 && c != -1) // current character is not line feed
     {
       wd[count].word[curr_c] = c;
       curr_c++;
