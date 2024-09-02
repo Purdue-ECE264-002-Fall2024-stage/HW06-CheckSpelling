@@ -23,7 +23,9 @@ What to Do
 ==============
 Complete the levenshtein function based on instructions above. 
 In the checker.c function, you will open a file which consists of a list of words(1st input to main), which will be compared with a particular word(2nd input to main). You will first complete countWords(), the function to count how many words are in the list.
+
 After that you will write readWords which read the words into a WordDistance array. During this step, you should keep in mind that there are testcases with over 41 characters, however MAXLENGTH, which is the length of the array, has a 41 character limit. Keep in mind that there might be a null terminating character '\0' at the end of your string, therefore you should only store the first 40 characters of the word to leave space for the null terminator at the end (will become relevant in test6).
+
 Then, you will complete calculateDistance which will fill out the WordDistance array using all the words in the list. After that, you'll have to fill out compareDistance which will be used in sortDistance in order to sort, based on the value of the distance, the list of words that are closest in spelling to the input word. Lastly, printWord will print out the first 10 words closest to your input word, and their number.
 
 Check Memory Leak
