@@ -21,7 +21,7 @@ int main(int argc, char** argv)
     return EXIT_FAILURE;
   }
   
-  WordDistance * wd = malloc(sizeof(WordDistance) * numword);
+  WordDistance* wd = malloc(sizeof(WordDistance) * numword);
   if (wd == NULL)
   {
     return EXIT_FAILURE;
@@ -36,5 +36,7 @@ int main(int argc, char** argv)
   calculateDistance(wd, numword, argv[2]);
   sortDistance(wd, numword);
   printWord(wd, numword);
+  
+  free(wd);
   return EXIT_SUCCESS;  
 }
