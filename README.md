@@ -47,8 +47,8 @@ else.  The teaching staff is strictly prohibited seeing anything on
 your computer for grading.
 
 ```
-zip 
+levenshtein.c, checker.c
 ```
 
-Upload `.zip`.
+Upload `hw06.zip`.
 
