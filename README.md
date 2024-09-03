@@ -21,10 +21,10 @@ To generate the list of words used in testcases, usr/share/dict/words was used, 
 
 What to Do
 ==============
-Complete the levenshtein function based on instructions above. 
+Complete the levenshtein function based on instructions above. You can do this in a recursive or iterative manner, and you can use a helper function if that will make your process easier. 
 In the checker.c function, you will open a file which consists of a list of words(1st input to main), which will be compared with a particular word(2nd input to main). You will first complete countWords(), the function to count how many words are in the list.
 
-After that you will write readWords which read the words into a WordDistance array. Then, you will complete calculateDistance, which will fill out the distance values in the WordDistance array using all the words in the list. After that, you'll have to fill out compareDistance which will be used in sortDistance in order to sort, based on the value of the distance, the list of words that are closest in spelling to the input word. Lastly, printWord will print out the first 10 words closest to your input word, and their number.
+After that you will write readWords which read the words into a WordDistance array. Then, you will complete calculateDistance, which will fill out the distance values in the WordDistance array using all the words in the list. compareDistance will be provided, you can use it in sortWord which you have to write using qsort. Lastly, printWord will print out the first 10 words closest to your input word, and their number, this will also be provided. 
 
 Check Memory Leak
 =================
@@ -40,11 +40,7 @@ bool readWords(char* filename, WordDistance* wd, int numword)
 
 void calculateDistance(WordDistance* wd, int numword, const char* tocheck)
 
-static int compareDistance(const void* ptr1, const void* ptr2)
-
 void sortDistance(WordDistance* wd, int numword)
-
-void printWord(WordDistance* wd, int numword)
 
 In Levenshtein.c:
 int Levenshtein(const char* str1, const char* str2)
