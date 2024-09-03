@@ -1,6 +1,7 @@
 #include <string.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <values.h>
 // algorithm described on
 // https://en.wikipedia.org/wiki/Levenshtein_distance
 
