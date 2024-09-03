@@ -11,77 +11,32 @@
 
 int countWords(char* filename)
 {
-  FILE * fin = fopen(filename, "r"); 
-  if (fin == NULL)
-  {
-    return 0;
-  } 
-
-  int count = 0;
-  while (!feof(fin)) 
-  {
-    if (fgetc(fin) == 10) // Check for Line Feeds to indicate end of line
-  	{
-      count++;
-    } 
-  }
-
-  fclose(fin);
-  return count + 1; // +1 because the number of line feeds = number of lines in file - 1 
+//open "filename" for reading. if NULL, return 0.
+//count the number of words in the file(hint, every word is a a singular line)
+//close the file
+// return the count of words in the file
 }
 
 
 bool readWords(char* filename, WordDistance* wd, int numword)
 {
-  FILE * fin = fopen(filename, "r"); //open file
-  if (fin == NULL)
-  {
-    return false;
-  }
-
-  int count = 0; //initalize counter
-  int curr_c = 0; // Current character index
-  
-  while (!feof(fin))
-  {
-    int c = fgetc(fin);
-    if (curr_c < (MAXLENGTH -1) && c != 10 && c != -1) // current character is not line feed
-    {
-      wd[count].word[curr_c] = c;
-      curr_c++;
-    }
-
-    else if (c == 10 || c == -1)
-    {
-      wd[count].word[curr_c] = 0;
-      curr_c = 0;
-  	  wd[count].distance = 0; 
-  	  count++; 
-    }
-	  
-    if (count > numword)
-    {
-      fprintf(stderr, "ERROR, count: %d, numword: %d\n", count, numword); 
-    }
-	}
-
-  fclose(fin);
+//open file for reading. if NULL, return false. 
+//put each word in the list from the input into a wd[count].word element. 
+//count the number of words that you've put in the list. if the number is more than numword(gotten from countWords),
+//then use fprintf to print to stderr: "ERROR, count: %d, numword: %d\n", count, numword. 
+//close file.
   return true;
 }
 
 
 void calculateDistance(WordDistance* wd, int numword, const char* tocheck)
 {
-  for (int ind = 0; ind < numword; ind++)
-  {
-    wd[ind].distance = Levenshtein_iterative(wd[ind].word, tocheck);
-  }
+//for each word in wd, use levenshtein to update its levenshtein distance in the distance element of the structure. tocheck is the word you will be checking the words in wd against.
 }
 
-
-static int compareDistance(const void* ptr1, const void* ptr2) //what is the static type
+//this function is provided as an argument to be used in qsort in the sortDistance function.
+static int compareDistance(const void* ptr1, const void* ptr2) 
 {
-  // ptr1 and ptr2 are WordDistance*
   const WordDistance* wd1 = (const WordDistance*) ptr1;
   const WordDistance* wd2 = (const WordDistance*) ptr2; 
   return ((wd1->distance) - (wd2->distance));
@@ -90,13 +45,13 @@ static int compareDistance(const void* ptr1, const void* ptr2) //what is the sta
 
 void sortDistance(WordDistance* wd, int numword)
 {
-  qsort(wd, numword, sizeof(WordDistance), compareDistance);
+ //use qsort to sort the wd array based on the value of distance elements. The lowest distances should be first. you can use compareDistance as a argument in qsort. 
 }
 
-
+//this function is provided to print the first 10 words closest to the input word, as well as their corresponding levenshtein distances. 
 void printWord(WordDistance* wd, int numword)
 {
-  int limit = numword < 10 ? numword : 10; // Handle test cases with fewer than 10 words
+  int limit = numword < 10 ? numword : 10;
   for (int ind = 0; ind < limit; ind++)
   {
     printf("%d, %s\n", wd[ind].distance, wd[ind].word);
