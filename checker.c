@@ -41,8 +41,8 @@ static int compareDistance(const void* ptr1, const void* ptr2)
   const WordDistance* wd2 = (const WordDistance*) ptr2; 
 
   //for words with the same distance, make sure that they are sorted in a alphabetical order. hint: use strcmp
-  //if wd1 has a distance longer than wd2, or if they have they same distance but wd1 is alphabetically lower than wd2, return a positive integer.
-  //if wd2 is longer than wd1 or have the same distance and is alphabetically lower than wd1, return a negative integer. 
+  //based on whichever word should have higher priority, you will either return a positive integer or a negative integer.
+  //for ex, if wd1 distance is higher than wd2 distance, you will return a positive integer.
   //You can learn more about how to implement this function by looking up how qsort works.
 }
 
