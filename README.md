@@ -24,7 +24,7 @@ What to Do
 Complete the levenshtein function based on instructions above. You can do this in a recursive or iterative manner, and you can use a helper function if that will make your process easier. 
 In the checker.c function, you will open a file which consists of a list of words(1st input to main), which will be compared with a particular word(2nd input to main). You will first complete countWords(), the function to count how many words are in the list.
 
-After that you will write readWords which read the words into a WordDistance array. Then, you will complete calculateDistance, which will fill out the distance values in the WordDistance array using all the words in the list. compareDistance will be provided, you can use it in sortWord which you have to write using qsort. Lastly, printWord will print out the first 10 words closest to your input word, and their number, this will also be provided. 
+After that you will write readWords which read the words into a WordDistance array. Then, you will complete calculateDistance, which will fill out the distance values in the WordDistance array using all the words in the list. compareDistance will be provided, you can use it in sortWord which you have to write using qsort. since qsort is not a stable way to sort things, you will also need to sort the words with the same distance lexicographically (in alphabetical order). You can acheive this through various functions, such as strcmp. Lastly, printWord will print out the first 10 words closest to your input word, and their number, this will also be provided. 
 
 Check Memory Leak
 =================
