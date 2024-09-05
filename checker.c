@@ -46,6 +46,7 @@ static int compareDistance(const void* ptr1, const void* ptr2)
 void sortDistance(WordDistance* wd, int numword)
 {
  //use qsort to sort the wd array based on the value of distance elements. The lowest distances should be first. you can use compareDistance as a argument in qsort. 
+//for words with the same distance, make sure that they are sorted in a alphabetical order. hint: use strcmp
 }
 
 //this function is provided to print the first 10 words closest to the input word, as well as their corresponding levenshtein distances. 
